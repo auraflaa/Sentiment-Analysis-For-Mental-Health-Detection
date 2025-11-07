@@ -80,11 +80,25 @@ The model was fine-tuned on a **custom-curated English dataset** of social posts
 
 The model achieves **balanced performance** across all classes, with a slight overlap observed between *Anxiety* and *Depression*.
 
+### Classification Report
+```
+              precision    recall  f1-score   support
+
+     Anxiety       0.88      0.85      0.87       248
+  Depression       0.86      0.78      0.82       248
+      Normal       0.94      0.98      0.96       248
+    Suicidal       0.91      0.98      0.94       248
+
+    accuracy                           0.90       992
+   macro avg       0.90      0.90      0.90       992
+weighted avg       0.90      0.90      0.90       992
+```
+
 | Metric | Score |
 |---------|--------|
-| Accuracy | 0.93 |
-| Macro F1 | 0.91 |
-| Precision | 0.92 |
+| Accuracy | 0.90 |
+| Macro F1 | 0.90 |
+| Precision | 0.90 |
 | Recall | 0.90 |
 
 ---
@@ -136,3 +150,4 @@ If you use this model in your work, please cite it:
 **Author:** Ourafla  
 **Hugging Face:** [huggingface.co/ourafla](https://huggingface.co/ourafla)  
 **GitHub:** [github.com/auraflaa](https://github.com/auraflaa)
+

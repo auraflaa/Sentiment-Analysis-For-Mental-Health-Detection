@@ -1,31 +1,38 @@
 # 🧠 Sentiment Analysis for Mental Health Detection
 
 This repository contains the code and documentation for a **BERT-based model** fine-tuned to classify text into four mental health categories:
-- Anxiety  
-- Depression  
-- Normal  
-- Suicidal Ideation  
+
+* Anxiety
+* Depression
+* Normal
+* Suicidal Ideation
 
 ---
 
 ## 🚀 Live Demo & Model
 
-This project is deployed and accessible via Hugging Face.
+This project is deployed and accessible via Hugging Face. The live frontend for the demo is hosted separately — see the **Live Site** and **Frontend repository** links below.
 
-- **Live Demo (Gradio):** Try the model in your browser  
-  https://huggingface.co/spaces/ourafla/Mental-Health-Detection/tree/main  
+* **Live Site (Production):** [https://mentalhealthsurvey.vercel.app/](https://mentalhealthsurvey.vercel.app/)
 
-- **Hugging Face Model:** View the model card & weights  
-  https://huggingface.co/ourafla/mental-health-bert-finetuned  
+* **Frontend (Source Code):** [https://github.com/auraflaa/Sentiment-Analysis-For-Mental-Health-Detection-Frontend](https://github.com/auraflaa/Sentiment-Analysis-For-Mental-Health-Detection-Frontend)
+
+* **Resources & Assets (Google Drive):** [https://drive.google.com/drive/folders/1cmoBkGWXl0z6FBM6VODNSI8-LNJbNGdB?usp=sharing](https://drive.google.com/drive/folders/1cmoBkGWXl0z6FBM6VODNSI8-LNJbNGdB?usp=sharing)
+
+* **Live Demo (Gradio):** Try the model in your browser
+  [https://huggingface.co/spaces/ourafla/Mental-Health-Detection/tree/main](https://huggingface.co/spaces/ourafla/Mental-Health-Detection/tree/main)
+
+* **Hugging Face Model:** View the model card & weights
+  [https://huggingface.co/ourafla/mental-health-bert-finetuned](https://huggingface.co/ourafla/mental-health-bert-finetuned)
 
 ---
 
 ## 🛑 Disclaimer
 
-This model is for **educational and research purposes only**.  
+This model is for **educational and research purposes only**.
 It is **not a substitute** for professional medical or psychological advice, diagnosis, or treatment.
 
-If you or someone you know is in crisis, please contact local mental health helplines or emergency services immediately.  
+If you or someone you know is in crisis, please contact local mental health helplines or emergency services immediately.
 This model is a tool, **not a medical professional**, and its predictions are **not a diagnosis**.
 
 ---
@@ -69,21 +76,22 @@ print({label: round(float(prob), 4) for label, prob in zip(labels, probs[0])})
 The model was fine-tuned on a **custom-curated English dataset from multiple sources**.
 
 ### Dataset Split
-- Training: ~49,382 samples  
-- Validation: ~5,487 samples  
-- Test: 992 samples (balanced: 248 per class)  
+
+* Training: ~49,382 samples
+* Validation: ~5,487 samples
+* Test: 992 samples (balanced: 248 per class)
 
 ### Hyperparameters
 
-| Parameter | Value |
-|----------|--------|
-| Base Model | `mental/mental-bert-base-uncased` |
-| Batch Size | 16 |
-| Learning Rate | 2e-5 |
-| Epochs | 5 |
-| Max Sequence Length | 128 |
-| Optimizer | AdamW with linear warmup |
-| Precision | fp16 (mixed) |
+| Parameter           | Value                             |
+| ------------------- | --------------------------------- |
+| Base Model          | `mental/mental-bert-base-uncased` |
+| Batch Size          | 16                                |
+| Learning Rate       | 2e-5                              |
+| Epochs              | 5                                 |
+| Max Sequence Length | 128                               |
+| Optimizer           | AdamW with linear warmup          |
+| Precision           | fp16 (mixed)                      |
 
 ---
 
@@ -93,18 +101,19 @@ The model was evaluated on a **balanced test set of 992 samples** (248 per class
 
 ### Summary Metrics
 
-| Metric | Score |
-|--------|--------|
-| Accuracy | 89.72% |
-| Macro F1 | 89.54% |
+| Metric          | Score  |
+| --------------- | ------ |
+| Accuracy        | 89.72% |
+| Macro F1        | 89.54% |
 | Macro Precision | 89.56% |
-| Macro Recall | 89.72% |
+| Macro Recall    | 89.72% |
 
 ### Per-Class Performance
-- **Normal:** 96% F1  
-- **Suicidal:** 94% F1  
-- **Anxiety:** 87% F1  
-- **Depression:** 82% F1  
+
+* **Normal:** 96% F1
+* **Suicidal:** 94% F1
+* **Anxiety:** 87% F1
+* **Depression:** 82% F1
 
 📌 *Confusion is highest between Anxiety and Depression due to linguistic overlap.*
 
@@ -122,8 +131,8 @@ docker build -t mental-health-api .
 docker run -p 8080:8080 mental-health-api
 ```
 
-Once running, open:  
-**http://localhost:8080**
+Once running, open:
+**[http://localhost:8080](http://localhost:8080)**
 
 (Assuming you configured a `/health` endpoint)
 
@@ -131,11 +140,11 @@ Once running, open:
 
 ## 🌎 Environmental Impact
 
-| Resource | Details |
-|----------|---------|
-| GPU | 1 × NVIDIA T4 (16GB) |
+| Resource          | Details                  |
+| ----------------- | ------------------------ |
+| GPU               | 1 × NVIDIA T4 (16GB)     |
 | Training Duration | ~1.3 hours (~80 minutes) |
-| Cloud Provider | Google Cloud (Colab) |
+| Cloud Provider    | Google Cloud (Colab)     |
 
 ---
 
@@ -168,7 +177,6 @@ And the base model:
 
 ## 👤 Contact
 
-**Author:** Priyangshu Mukherjee  
-**Hugging Face:** https://huggingface.co/ourafla  
-**GitHub:** https://github.com/auraflaa
-
+**Author:** Priyangshu Mukherjee
+**Hugging Face:** [https://huggingface.co/ourafla](https://huggingface.co/ourafla)
+**GitHub:** [https://github.com/auraflaa](https://github.com/auraflaa)

@@ -1,29 +1,31 @@
 # 🧠 Sentiment Analysis for Mental Health Detection
 
 This repository contains the code and documentation for a **BERT-based model** fine-tuned to classify text into four mental health categories:
-
-* Anxiety
-* Depression
-* Normal
-* Suicidal Ideation
+- Anxiety  
+- Depression  
+- Normal  
+- Suicidal Ideation  
 
 ---
 
 ## 🚀 Live Demo & Model
 
-This project is deployed and accessible via **Hugging Face**.
+This project is deployed and accessible via Hugging Face.
 
-* **Live Demo (Gradio):** [ourafla/Mental-Health-Detection (Space)](https://huggingface.co/spaces/ourafla/Mental-Health-Detection)
-* **Hugging Face Model:** [ourafla/mental-health-bert-finetuned](https://huggingface.co/ourafla/mental-health-bert-finetuned)
+- **Live Demo (Gradio):** Try the model in your browser  
+  https://huggingface.co/spaces/ourafla/Mental-Health-Detection/tree/main  
+
+- **Hugging Face Model:** View the model card & weights  
+  https://huggingface.co/ourafla/mental-health-bert-finetuned  
 
 ---
 
 ## 🛑 Disclaimer
 
-This model is for **educational and research purposes only**.
+This model is for **educational and research purposes only**.  
 It is **not a substitute** for professional medical or psychological advice, diagnosis, or treatment.
 
-If you or someone you know is in crisis, please contact local mental health helplines or emergency services immediately.
+If you or someone you know is in crisis, please contact local mental health helplines or emergency services immediately.  
 This model is a tool, **not a medical professional**, and its predictions are **not a diagnosis**.
 
 ---
@@ -64,46 +66,47 @@ print({label: round(float(prob), 4) for label, prob in zip(labels, probs[0])})
 
 ## ⚙️ Model Training
 
-The model was fine-tuned on a **custom-curated English dataset** of social posts and anonymized text.
+The model was fine-tuned on a **custom-curated English dataset from multiple sources**.
 
-| Parameter           | Value                                 |
-| ------------------- | ------------------------------------- |
-| Dataset Split       | 80% Train / 10% Validation / 10% Test |
-| Base Model          | `bert-base-uncased`                   |
-| Batch Size          | 16                                    |
-| Learning Rate       | 2e-5                                  |
-| Epochs              | 4                                     |
-| Max Sequence Length | 128                                   |
-| Optimizer           | AdamW with LR-scheduler               |
-| Precision           | fp16 (mixed)                          |
+### Dataset Split
+- Training: ~49,382 samples  
+- Validation: ~5,487 samples  
+- Test: 992 samples (balanced: 248 per class)  
+
+### Hyperparameters
+
+| Parameter | Value |
+|----------|--------|
+| Base Model | `mental/mental-bert-base-uncased` |
+| Batch Size | 16 |
+| Learning Rate | 2e-5 |
+| Epochs | 5 |
+| Max Sequence Length | 128 |
+| Optimizer | AdamW with linear warmup |
+| Precision | fp16 (mixed) |
 
 ---
 
 ## 📊 Evaluation Results
 
-The model achieves **balanced performance** across all classes, with a slight overlap observed between *Anxiety* and *Depression*.
+The model was evaluated on a **balanced test set of 992 samples** (248 per class).
 
-### Classification Report
+### Summary Metrics
 
-```
-              precision    recall  f1-score   support
+| Metric | Score |
+|--------|--------|
+| Accuracy | 89.72% |
+| Macro F1 | 89.54% |
+| Macro Precision | 89.56% |
+| Macro Recall | 89.72% |
 
-     Anxiety       0.88      0.85      0.87       248
-  Depression       0.86      0.78      0.82       248
-      Normal       0.94      0.98      0.96       248
-    Suicidal       0.91      0.98      0.94       248
+### Per-Class Performance
+- **Normal:** 96% F1  
+- **Suicidal:** 94% F1  
+- **Anxiety:** 87% F1  
+- **Depression:** 82% F1  
 
-    accuracy                           0.90       992
-   macro avg       0.90      0.90      0.90       992
-weighted avg       0.90      0.90      0.90       992
-```
-
-| Metric    | Score |
-| --------- | ----- |
-| Accuracy  | 0.90  |
-| Macro F1  | 0.90  |
-| Precision | 0.90  |
-| Recall    | 0.90  |
+📌 *Confusion is highest between Anxiety and Depression due to linguistic overlap.*
 
 ---
 
@@ -112,38 +115,52 @@ weighted avg       0.90      0.90      0.90       992
 This model can be easily containerized and deployed as a web service.
 
 ```bash
-# 1. Build the Docker image
+# Build the Docker image
 docker build -t mental-health-api .
 
-# 2. Run the container
+# Run the container
 docker run -p 8080:8080 mental-health-api
 ```
 
-Once running, visit [http://localhost:8080](http://localhost:8080) to verify the API health (assuming a health-check endpoint is configured in your `main.py`/`app.py`).
+Once running, open:  
+**http://localhost:8080**
+
+(Assuming you configured a `/health` endpoint)
 
 ---
 
 ## 🌎 Environmental Impact
 
-| Resource          | Detail                |
-| ----------------- | --------------------- |
-| GPU               | 1 × NVIDIA T4 (16 GB) |
-| Training Duration | ~1 hour               |
-| Cloud Provider    | Google Cloud          |
-| CO₂ Emissions     | ≈ 60 g CO₂eq          |
+| Resource | Details |
+|----------|---------|
+| GPU | 1 × NVIDIA T4 (16GB) |
+| Training Duration | ~1.3 hours (~80 minutes) |
+| Cloud Provider | Google Cloud (Colab) |
 
 ---
 
 ## 📜 Citation
 
-If you use this model in your work, please cite it:
+If you use this model in your work, please cite:
 
 ```bibtex
-@misc{ourafla2025mentalbert,
-  author = {Ourafla},
-  title  = {Mental Health BERT Fine-Tuned Classifier},
-  year   = {2025},
+@software{mental_health_classifier_2025,
+  author = {Mukherjee, Priyangshu},
+  title = {Mental Health Text Classifier (MentalBERT Fine-tuned)},
+  year = {2025},
+  note = {Fine-tuned model hosted on Hugging Face as ourafla/mental-health-bert-finetuned},
   howpublished = {\url{https://huggingface.co/ourafla/mental-health-bert-finetuned}}
+}
+```
+
+And the base model:
+
+```bibtex
+@inproceedings{ji2022mentalbert,
+  title = {{MentalBERT: Publicly Available Pretrained Language Models for Mental Healthcare}},
+  author = {Shaoxiong Ji and Tianlin Zhang and Luna Ansari and Jie Fu and Prayag Tiwari and Erik Cambria},
+  year = {2022},
+  booktitle = {Proceedings of LREC}
 }
 ```
 
@@ -151,6 +168,7 @@ If you use this model in your work, please cite it:
 
 ## 👤 Contact
 
-**Author:** Ourafla
-**Hugging Face:** [huggingface.co/ourafla](https://huggingface.co/ourafla)
-**GitHub:** [github.com/auraflaa](https://github.com/auraflaa)
+**Author:** Priyangshu Mukherjee  
+**Hugging Face:** https://huggingface.co/ourafla  
+**GitHub:** https://github.com/auraflaa
+

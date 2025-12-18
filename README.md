@@ -192,4 +192,5 @@ Base model:
 
 * Hugging Face: [https://huggingface.co/ourafla](https://huggingface.co/ourafla)
 * GitHub: [https://github.com/auraflaa](https://github.com/auraflaa)
+* Kaggle: [https://www.kaggle.com/priyangshumukherjee](https://www.kaggle.com/priyangshumukherjee)
 

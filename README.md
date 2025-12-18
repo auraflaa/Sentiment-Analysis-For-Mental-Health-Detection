@@ -1,4 +1,3 @@
-````md
 # 🧠 Sentiment Analysis for Mental Health Detection
 
 This repository contains the code and documentation for a **BERT-based model** fine-tuned to classify text into four mental health categories:

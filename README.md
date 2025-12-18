@@ -193,5 +193,3 @@ Base model:
 * Hugging Face: [https://huggingface.co/ourafla](https://huggingface.co/ourafla)
 * GitHub: [https://github.com/auraflaa](https://github.com/auraflaa)
 
-```
-```

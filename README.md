@@ -1,87 +1,111 @@
+````md
 # 🧠 Sentiment Analysis for Mental Health Detection
 
 This repository contains the code and documentation for a **BERT-based model** fine-tuned to classify text into four mental health categories:
 
-* Anxiety
-* Depression
-* Normal
-* Suicidal Ideation
+- Anxiety  
+- Depression  
+- Normal  
+- Suicidal Ideation  
+
+The project demonstrates **end-to-end ML ownership**: dataset curation, model training, evaluation, deployment, and public distribution across **Hugging Face and Kaggle**.
 
 ---
 
-## 🚀 Live Demo & Model
+## 🚀 Live Demo, Models & Datasets
 
-This project is deployed and accessible via Hugging Face. The live frontend for the demo is hosted separately — see the **Live Site** and **Frontend repository** links below.
+### 🔗 Live Applications
 
-* **Live Site (Production):** [https://mentalhealthsurvey.vercel.app/](https://mentalhealthsurvey.vercel.app/)
+- **Production Web App:**  
+  https://mentalhealthsurvey.vercel.app/
 
-* **Frontend (Source Code):** [https://github.com/auraflaa/Sentiment-Analysis-For-Mental-Health-Detection-Frontend](https://github.com/auraflaa/Sentiment-Analysis-For-Mental-Health-Detection-Frontend)
+- **Frontend Source Code:**  
+  https://github.com/auraflaa/Sentiment-Analysis-For-Mental-Health-Detection-Frontend
 
-* **Resources & Assets (Google Drive):** [https://drive.google.com/drive/folders/1cmoBkGWXl0z6FBM6VODNSI8-LNJbNGdB?usp=sharing](https://drive.google.com/drive/folders/1cmoBkGWXl0z6FBM6VODNSI8-LNJbNGdB?usp=sharing)
+- **Interactive Demo (Gradio on Hugging Face Spaces):**  
+  https://huggingface.co/spaces/ourafla/Mental-Health-Detection/tree/main
 
-* **Live Demo (Gradio):** Try the model in your browser
-  [https://huggingface.co/spaces/ourafla/Mental-Health-Detection/tree/main](https://huggingface.co/spaces/ourafla/Mental-Health-Detection/tree/main)
+---
 
-* **Hugging Face Model:** View the model card & weights
-  [https://huggingface.co/ourafla/mental-health-bert-finetuned](https://huggingface.co/ourafla/mental-health-bert-finetuned)
+### 🤖 Model Artifacts
+
+The fine-tuned model is published on **both Hugging Face and Kaggle** to maximize accessibility and reproducibility.
+
+- **Hugging Face Model (Primary):**  
+  https://huggingface.co/ourafla/mental-health-bert-finetuned  
+
+- **Kaggle Model:**  
+  https://www.kaggle.com/models/priyangshumukherjee/mental-health-bert-fine-tunes  
+
+Both model versions contain the same trained weights and label configuration.
+
+---
+
+### 📂 Dataset Artifacts
+
+The training data is a **custom-curated, multi-source English mental health dataset**, published on both platforms.
+
+- **Hugging Face Dataset (Primary):**  
+  https://huggingface.co/datasets/ourafla/Mental-Health_Text-Classification_Dataset  
+
+- **Kaggle Dataset:**  
+  https://www.kaggle.com/datasets/priyangshumukherjee/mental-health-text-classification-dataset  
+
+The dataset includes cleaned text samples with four target classes and fixed train/validation/test splits.
+
+---
+
+### 📁 Resources & Assets
+
+- **Google Drive (reports, visuals, auxiliary files):**  
+  https://drive.google.com/drive/folders/1cmoBkGWXl0z6FBM6VODNSI8-LNJbNGdB?usp=sharing  
 
 ---
 
 ## 🛑 Disclaimer
 
-This model is for **educational and research purposes only**.
-It is **not a substitute** for professional medical or psychological advice, diagnosis, or treatment.
+This project is intended **strictly for educational and research purposes**.
 
-If you or someone you know is in crisis, please contact local mental health helplines or emergency services immediately.
-This model is a tool, **not a medical professional**, and its predictions are **not a diagnosis**.
+It is **not a medical diagnostic tool** and must not be used as a substitute for professional mental health care.
+
+If you or someone you know is experiencing a mental health crisis, please seek help from qualified professionals or local emergency services.
 
 ---
 
-## 💻 Example Usage
-
-You can easily load and use this model directly from the **Hugging Face Hub**:
+## 💻 Example Usage (Hugging Face Hub)
 
 ```python
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 
-# Load the model and tokenizer
 model_name = "ourafla/mental-health-bert-finetuned"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForSequenceClassification.from_pretrained(model_name)
 
-# Define labels
 labels = ["Anxiety", "Depression", "Normal", "Suicidal"]
 
-# Run inference
 text = "I've been feeling really anxious and tired lately."
 inputs = tokenizer(text, return_tensors="pt")
 
 with torch.no_grad():
     logits = model(**inputs).logits
 
-# Get probabilities
 probs = torch.nn.functional.softmax(logits, dim=-1)
 
-# Print the results
-print(f"Text: '{text}'")
-print("--- Predictions ---")
 print({label: round(float(prob), 4) for label, prob in zip(labels, probs[0])})
-```
+````
 
 ---
 
 ## ⚙️ Model Training
 
-The model was fine-tuned on a **custom-curated English dataset from multiple sources**.
+### Dataset Composition
 
-### Dataset Split
+* **Training:** ~49,382 samples
+* **Validation:** ~5,487 samples
+* **Test:** 992 samples (balanced: 248 per class)
 
-* Training: ~49,382 samples
-* Validation: ~5,487 samples
-* Test: 992 samples (balanced: 248 per class)
-
-### Hyperparameters
+### Training Configuration
 
 | Parameter           | Value                             |
 | ------------------- | --------------------------------- |
@@ -90,16 +114,14 @@ The model was fine-tuned on a **custom-curated English dataset from multiple sou
 | Learning Rate       | 2e-5                              |
 | Epochs              | 5                                 |
 | Max Sequence Length | 128                               |
-| Optimizer           | AdamW with linear warmup          |
-| Precision           | fp16 (mixed)                      |
+| Optimizer           | AdamW + Linear Warmup             |
+| Precision           | FP16 (mixed precision)            |
 
 ---
 
 ## 📊 Evaluation Results
 
-The model was evaluated on a **balanced test set of 992 samples** (248 per class).
-
-### Summary Metrics
+Evaluated on a **strictly held-out, balanced test set**.
 
 | Metric          | Score  |
 | --------------- | ------ |
@@ -108,75 +130,69 @@ The model was evaluated on a **balanced test set of 992 samples** (248 per class
 | Macro Precision | 89.56% |
 | Macro Recall    | 89.72% |
 
-### Per-Class Performance
+### Per-Class F1 Scores
 
-* **Normal:** 96% F1
-* **Suicidal:** 94% F1
-* **Anxiety:** 87% F1
-* **Depression:** 82% F1
+* **Normal:** 96%
+* **Suicidal:** 94%
+* **Anxiety:** 87%
+* **Depression:** 82%
 
-📌 *Confusion is highest between Anxiety and Depression due to linguistic overlap.*
+*Most confusion occurs between Anxiety and Depression due to linguistic overlap.*
 
 ---
 
 ## 🐳 Deployment
 
-This model can be easily containerized and deployed as a web service.
+The model can be containerized and deployed as an API service.
 
 ```bash
-# Build the Docker image
 docker build -t mental-health-api .
-
-# Run the container
 docker run -p 8080:8080 mental-health-api
 ```
-
-Once running, open:
-**[http://localhost:8080](http://localhost:8080)**
-
-(Assuming you configured a `/health` endpoint)
 
 ---
 
 ## 🌎 Environmental Impact
 
-| Resource          | Details                  |
-| ----------------- | ------------------------ |
-| GPU               | 1 × NVIDIA T4 (16GB)     |
-| Training Duration | ~1.3 hours (~80 minutes) |
-| Cloud Provider    | Google Cloud (Colab)     |
+| Resource      | Details              |
+| ------------- | -------------------- |
+| GPU           | NVIDIA T4 (16GB)     |
+| Training Time | ~1.3 hours           |
+| Platform      | Google Cloud / Colab |
 
 ---
 
 ## 📜 Citation
-
-If you use this model in your work, please cite:
 
 ```bibtex
 @software{mental_health_classifier_2025,
   author = {Mukherjee, Priyangshu},
   title = {Mental Health Text Classifier (MentalBERT Fine-tuned)},
   year = {2025},
-  note = {Fine-tuned model hosted on Hugging Face as ourafla/mental-health-bert-finetuned},
+  note = {Model published on Hugging Face and Kaggle},
   howpublished = {\url{https://huggingface.co/ourafla/mental-health-bert-finetuned}}
 }
 ```
 
-And the base model:
+Base model:
 
 ```bibtex
 @inproceedings{ji2022mentalbert,
-  title = {{MentalBERT: Publicly Available Pretrained Language Models for Mental Healthcare}},
-  author = {Shaoxiong Ji and Tianlin Zhang and Luna Ansari and Jie Fu and Prayag Tiwari and Erik Cambria},
-  year = {2022},
-  booktitle = {Proceedings of LREC}
+  title = {MentalBERT: Publicly Available Pretrained Language Models for Mental Healthcare},
+  author = {Ji, Shaoxiong and Zhang, Tianlin and Ansari, Luna and Fu, Jie and Tiwari, Prayag and Cambria, Erik},
+  booktitle = {LREC},
+  year = {2022}
 }
 ```
 
 ---
 
-## 👤 Contact
+## 👤 Author
 
-**Author:** Priyangshu Mukherjee
-**Hugging Face:** [https://huggingface.co/ourafla](https://huggingface.co/ourafla)
-**GitHub:** [https://github.com/auraflaa](https://github.com/auraflaa)
+**Priyangshu Mukherjee**
+
+* Hugging Face: [https://huggingface.co/ourafla](https://huggingface.co/ourafla)
+* GitHub: [https://github.com/auraflaa](https://github.com/auraflaa)
+
+```
+```

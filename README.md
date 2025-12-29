@@ -140,7 +140,7 @@ Evaluated on a **strictly held-out, balanced test set**.
 
 ---
 
-## 📈 Model Evaluation & Error Analysis
+## 📈 Advance Model Evaluation & Error Analysis
 
 To better understand the model’s behaviour beyond aggregate metrics, an additional evaluation notebook is provided on Kaggle. This analysis focuses on class-wise errors, confusion patterns, and probability calibration, with particular attention to uncertainty in linguistically overlapping categories such as Anxiety and Depression.
 

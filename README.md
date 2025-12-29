@@ -140,6 +140,17 @@ Evaluated on a **strictly held-out, balanced test set**.
 
 ---
 
+## 📈 Model Evaluation & Error Analysis
+
+To better understand the model’s behaviour beyond aggregate metrics, an additional evaluation notebook is provided on Kaggle. This analysis focuses on class-wise errors, confusion patterns, and probability calibration, with particular attention to uncertainty in linguistically overlapping categories such as Anxiety and Depression.
+
+The intent of this evaluation is not to claim clinical reliability, but to transparently examine where the model performs well and where it remains limited.
+
+* **Kaggle Evaluation Notebook:**
+  [https://www.kaggle.com/code/priyangshumukherjee/mental-health-bert-fine-tuned-evaluation](https://www.kaggle.com/code/priyangshumukherjee/mental-health-bert-fine-tuned-evaluation)
+
+---
+
 ## 🐳 Deployment
 
 The model can be containerized and deployed as an API service.

@@ -1,4 +1,4 @@
-# 🧠 Sentiment Analysis for Mental Health Detection
+# Sentiment Analysis for Mental Health Detection
 
 This repository contains the code and documentation for a **BERT-based model** fine-tuned to classify text into four mental health categories:
 
@@ -11,9 +11,9 @@ The project demonstrates **end-to-end ML ownership**: dataset curation, model tr
 
 ---
 
-## 🚀 Live Demo, Models & Datasets
+## Live Demo, Models & Datasets
 
-### 🔗 Live Applications
+### Live Applications
 
 - **Production Web App:**  
   https://mentalhealthsurvey.vercel.app/
@@ -26,7 +26,7 @@ The project demonstrates **end-to-end ML ownership**: dataset curation, model tr
 
 ---
 
-### 🤖 Model Artifacts
+### Model Artifacts
 
 The fine-tuned model is published on **both Hugging Face and Kaggle** to maximize accessibility and reproducibility.
 
@@ -40,7 +40,7 @@ Both model versions contain the same trained weights and label configuration.
 
 ---
 
-### 📂 Dataset Artifacts
+### Dataset Artifacts
 
 The training data is a **custom-curated, multi-source English mental health dataset**, published on both platforms.
 
@@ -54,14 +54,14 @@ The dataset includes cleaned text samples with four target classes and fixed tra
 
 ---
 
-### 📁 Resources & Assets
+### Resources & Assets
 
 - **Google Drive (reports, visuals, auxiliary files):**  
   https://drive.google.com/drive/folders/1cmoBkGWXl0z6FBM6VODNSI8-LNJbNGdB?usp=sharing  
 
 ---
 
-## 🛑 Disclaimer
+## Disclaimer
 
 This project is intended **strictly for educational and research purposes**.
 
@@ -71,7 +71,7 @@ If you or someone you know is experiencing a mental health crisis, please seek h
 
 ---
 
-## 💻 Example Usage (Hugging Face Hub)
+## Example Usage (Hugging Face Hub)
 
 ```python
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
@@ -96,7 +96,7 @@ print({label: round(float(prob), 4) for label, prob in zip(labels, probs[0])})
 
 ---
 
-## ⚙️ Model Training
+## Model Training
 
 ### Dataset Composition
 
@@ -118,7 +118,7 @@ print({label: round(float(prob), 4) for label, prob in zip(labels, probs[0])})
 
 ---
 
-## 📊 Evaluation Results
+## Evaluation Results
 
 Evaluated on a **strictly held-out, balanced test set**.
 
@@ -140,7 +140,7 @@ Evaluated on a **strictly held-out, balanced test set**.
 
 ---
 
-## 📈 Advance Model Evaluation & Error Analysis
+## Advance Model Evaluation & Error Analysis
 
 To better understand the model’s behaviour beyond aggregate metrics, an additional evaluation notebook is provided on Kaggle. This analysis focuses on class-wise errors, confusion patterns, and probability calibration, with particular attention to uncertainty in linguistically overlapping categories such as Anxiety and Depression.
 
@@ -151,7 +151,7 @@ The intent of this evaluation is not to claim clinical reliability, but to trans
 
 ---
 
-## 🐳 Deployment
+## Deployment
 
 The model can be containerized and deployed as an API service.
 
@@ -162,7 +162,7 @@ docker run -p 8080:8080 mental-health-api
 
 ---
 
-## 🌎 Environmental Impact
+## Environmental Impact
 
 | Resource      | Details              |
 | ------------- | -------------------- |
@@ -172,7 +172,7 @@ docker run -p 8080:8080 mental-health-api
 
 ---
 
-## 📜 Citation
+## Citation
 
 ```bibtex
 @software{mental_health_classifier_2025,
@@ -197,7 +197,7 @@ Base model:
 
 ---
 
-## 👤 Author
+## Author
 
 **Priyangshu Mukherjee**
 

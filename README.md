@@ -1,67 +1,67 @@
-# Sentiment Analysis for Mental Health Detection
+# 🧠 Sentiment Analysis for Mental Health Detection
 
 This repository contains the code and documentation for a **BERT-based model** fine-tuned to classify text into four mental health categories:
 
-- Anxiety  
-- Depression  
-- Normal  
-- Suicidal Ideation  
+* Anxiety
+* Depression
+* Normal
+* Suicidal Ideation
 
 The project demonstrates **end-to-end ML ownership**: dataset curation, model training, evaluation, deployment, and public distribution across **Hugging Face and Kaggle**.
 
 ---
 
-## Live Demo, Models & Datasets
+## 🔗 Live Demo, Models & Datasets
 
-### Live Applications
+### 🚀 Live Applications
 
-- **Production Web App:**  
-  https://mentalhealthsurvey.vercel.app/
+* **Production Web App:**
+  [https://mentalhealthsurvey.vercel.app/](https://mentalhealthsurvey.vercel.app/)
 
-- **Frontend Source Code:**  
-  https://github.com/auraflaa/Sentiment-Analysis-For-Mental-Health-Detection-Frontend
+* **Frontend Source Code:**
+  [https://github.com/auraflaa/Sentiment-Analysis-For-Mental-Health-Detection-Frontend](https://github.com/auraflaa/Sentiment-Analysis-For-Mental-Health-Detection-Frontend)
 
-- **Interactive Demo (Gradio on Hugging Face Spaces):**  
-  https://huggingface.co/spaces/ourafla/Mental-Health-Detection/tree/main
+* **Interactive Demo (Gradio on Hugging Face Spaces):**
+  [https://huggingface.co/spaces/ourafla/Mental-Health-Detection/tree/main](https://huggingface.co/spaces/ourafla/Mental-Health-Detection/tree/main)
 
 ---
 
-### Model Artifacts
+### 🧠 Model Artifacts
 
 The fine-tuned model is published on **both Hugging Face and Kaggle** to maximize accessibility and reproducibility.
 
-- **Hugging Face Model (Primary):**  
-  https://huggingface.co/ourafla/mental-health-bert-finetuned  
+* **Hugging Face Model (Primary):**
+  [https://huggingface.co/ourafla/mental-health-bert-finetuned](https://huggingface.co/ourafla/mental-health-bert-finetuned)
 
-- **Kaggle Model:**  
-  https://www.kaggle.com/models/priyangshumukherjee/mental-health-bert-fine-tunes  
+* **Kaggle Model:**
+  [https://www.kaggle.com/models/priyangshumukherjee/mental-health-bert-fine-tunes](https://www.kaggle.com/models/priyangshumukherjee/mental-health-bert-fine-tunes)
 
 Both model versions contain the same trained weights and label configuration.
 
 ---
 
-### Dataset Artifacts
+### 📦 Dataset Artifacts
 
 The training data is a **custom-curated, multi-source English mental health dataset**, published on both platforms.
 
-- **Hugging Face Dataset (Primary):**  
-  https://huggingface.co/datasets/ourafla/Mental-Health_Text-Classification_Dataset  
+* **Hugging Face Dataset (Primary):**
+  [https://huggingface.co/datasets/ourafla/Mental-Health_Text-Classification_Dataset](https://huggingface.co/datasets/ourafla/Mental-Health_Text-Classification_Dataset)
 
-- **Kaggle Dataset:**  
-  https://www.kaggle.com/datasets/priyangshumukherjee/mental-health-text-classification-dataset  
+* **Kaggle Dataset:**
+  [https://www.kaggle.com/datasets/priyangshumukherjee/mental-health-text-classification-dataset](https://www.kaggle.com/datasets/priyangshumukherjee/mental-health-text-classification-dataset)
 
 The dataset includes cleaned text samples with four target classes and fixed train/validation/test splits.
 
 ---
 
-### Resources & Assets
+### 📁 Resources & Assets
 
-- **Google Drive (reports, visuals, auxiliary files):**  
-  https://drive.google.com/drive/folders/1cmoBkGWXl0z6FBM6VODNSI8-LNJbNGdB?usp=sharing  
+* **Google Drive (reports, visuals, auxiliary files):**
+  [https://drive.google.com/drive/folders/1cmoBkGWXl0z6FBM6VODNSI8-LNJbNGdB?usp=sharing](https://drive.google.com/drive/folders/1cmoBkGWXl0z6FBM6VODNSI8-LNJbNGdB?usp=sharing)
 
 ---
 
-## Disclaimer
+## ⚠️ Disclaimer
 
 This project is intended **strictly for educational and research purposes**.
 
@@ -71,7 +71,7 @@ If you or someone you know is experiencing a mental health crisis, please seek h
 
 ---
 
-## Example Usage (Hugging Face Hub)
+## 💻 Example Usage (Hugging Face Hub)
 
 ```python
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
@@ -92,19 +92,21 @@ with torch.no_grad():
 probs = torch.nn.functional.softmax(logits, dim=-1)
 
 print({label: round(float(prob), 4) for label, prob in zip(labels, probs[0])})
-````
+```
 
 ---
 
-## Model Training
+## ⚙️ Model Training
 
-### Dataset Composition
+### 📊 Dataset Composition
 
 * **Training:** ~49,382 samples
 * **Validation:** ~5,487 samples
 * **Test:** 992 samples (balanced: 248 per class)
 
-### Training Configuration
+---
+
+### 🧪 Training Configuration
 
 | Parameter           | Value                             |
 | ------------------- | --------------------------------- |
@@ -118,7 +120,7 @@ print({label: round(float(prob), 4) for label, prob in zip(labels, probs[0])})
 
 ---
 
-## Evaluation Results
+## 📈 Evaluation Results
 
 Evaluated on a **strictly held-out, balanced test set**.
 
@@ -129,7 +131,7 @@ Evaluated on a **strictly held-out, balanced test set**.
 | Macro Precision | 89.56% |
 | Macro Recall    | 89.72% |
 
-### Per-Class F1 Scores
+### 📉 Per-Class F1 Scores
 
 * **Normal:** 96%
 * **Suicidal:** 94%
@@ -140,7 +142,7 @@ Evaluated on a **strictly held-out, balanced test set**.
 
 ---
 
-## Advance Model Evaluation & Error Analysis
+## 🔍 Advanced Model Evaluation & Error Analysis
 
 To better understand the model’s behaviour beyond aggregate metrics, an additional evaluation notebook is provided on Kaggle. This analysis focuses on class-wise errors, confusion patterns, and probability calibration, with particular attention to uncertainty in linguistically overlapping categories such as Anxiety and Depression.
 
@@ -151,7 +153,7 @@ The intent of this evaluation is not to claim clinical reliability, but to trans
 
 ---
 
-## Deployment
+## 🚢 Deployment
 
 The model can be containerized and deployed as an API service.
 
@@ -162,7 +164,7 @@ docker run -p 8080:8080 mental-health-api
 
 ---
 
-## Environmental Impact
+## 🌱 Environmental Impact
 
 | Resource      | Details              |
 | ------------- | -------------------- |
@@ -172,7 +174,7 @@ docker run -p 8080:8080 mental-health-api
 
 ---
 
-## Citation
+## 📚 Citation
 
 ```bibtex
 @software{mental_health_classifier_2025,
@@ -197,11 +199,10 @@ Base model:
 
 ---
 
-## Author
+## 👤 Author
 
 **Priyangshu Mukherjee**
 
 * Hugging Face: [https://huggingface.co/ourafla](https://huggingface.co/ourafla)
 * GitHub: [https://github.com/auraflaa](https://github.com/auraflaa)
 * Kaggle: [https://www.kaggle.com/priyangshumukherjee](https://www.kaggle.com/priyangshumukherjee)
-

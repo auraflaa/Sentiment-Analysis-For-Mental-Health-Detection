@@ -22,7 +22,7 @@ The project demonstrates **end-to-end ML ownership**: dataset curation, model tr
   [https://github.com/auraflaa/Sentiment-Analysis-For-Mental-Health-Detection-Frontend](https://github.com/auraflaa/Sentiment-Analysis-For-Mental-Health-Detection-Frontend)
 
 * **Interactive Demo (Gradio on Hugging Face Spaces):**
-  [https://huggingface.co/spaces/ourafla/Mental-Health-Detection/tree/main](https://huggingface.co/spaces/ourafla/Mental-Health-Detection/tree/main)
+  [https://huggingface.co/spaces/ourafla/Mental-Health-Detection](https://huggingface.co/spaces/ourafla/Mental-Health-Detection)
 
 ---
 

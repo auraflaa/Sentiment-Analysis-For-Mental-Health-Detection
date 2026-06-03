@@ -1,4 +1,13 @@
+<div align="center">
+
 # Sentiment Analysis for Mental Health Detection
+
+
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+
+</div>
+
+---
 
 This repository contains the code and documentation for a **BERT-based model** fine-tuned to classify text into four mental health categories:
 
